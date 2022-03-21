@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyWayManagerApp.Views.LogIn">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="#2d2f31">
+                <Grid>
+                    <StackLayout Padding="0" Margin="0" HorizontalOptions="FillAndExpand">
+                        <Image Source="logoClean.png" />
+                        <Frame HeightRequest="150" BackgroundColor="#2d2f31" Padding="0" Margin="0">
+                            <Image Source="signunbackground.jpg"  Margin="0" Aspect="AspectFit" />
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout Padding="0" Margin="10,180,10,0" HorizontalOptions="FillAndExpand">
+
+                        <Frame  BackgroundColor="#2d2f31" HeightRequest="500" HasShadow="True" Padding="0" Margin="0">
+
+                            <StackLayout>
+
+
+                                <StackLayout Margin="10">
+                                    <Label Text="Log In" TextColor="#fdf0d5" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="50"/>
+                                </StackLayout>
+
+                                <StackLayout Padding="0" Margin="15,10">
+
+                                    <Frame BackgroundColor="#96FFFFFF" BorderColor="DarkGray" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Frame BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="6">
+                                                <Image Source="userIcon.png" Aspect="AspectFill" Margin="0"/>
+                                            </Frame>
+
+                                            <Entry Placeholder="Email" Text="{Binding Email}"
+                                                   TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                                        </StackLayout>
+                                    </Frame>
+
+                                    <Frame BackgroundColor="#96FFFFFF" BorderColor="DarkGray" Margin="0,15,0,0" Padding="0" HorizontalOptions="FillAndExpand" CornerRadius="30">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Frame BackgroundColor="Transparent" HeightRequest="40" WidthRequest="40" CornerRadius="30" Padding="0" Margin="5">
+                                                <Image Source="password.png" Aspect="AspectFill" Margin="0"/>
+                                            </Frame>
+
+                                            <Entry Placeholder="Password"  Text="{Binding Password}" IsPassword="True" TextColor="Black" FontAttributes="None" HorizontalOptions="FillAndExpand" Margin="0,0,20,0"/>
+                                        </StackLayout>
+                                    </Frame>
+                                    <Button Text="Log In" Command="{Binding SubmitCommand}" BackgroundColor="#bf0603" FontAttributes="Bold" FontSize="20" TextColor="White" CornerRadius="30"  Margin="36" />
+
+
+
+
+                                </StackLayout>
+
+
+                            </StackLayout>
+
+                        </Frame>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
