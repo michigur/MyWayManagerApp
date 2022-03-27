@@ -111,5 +111,71 @@ namespace MyWayManagerApp.Services
                 return null;
             }
         }
+
+
+        public async Task<List<Client>> GetUsersAsync()
+        {
+            try
+            {
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/GetClients");
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve, //avoid reference loops!
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string content = await response.Content.ReadAsStringAsync();
+                    List<Client> tbl = JsonSerializer.Deserialize<List<Client>>(content, options);
+
+
+                    return tbl;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+
+
+
+
+        public async Task<Manager> SignUpAsync(Manager u)
+        {
+            try
+            {
+                JsonSerializerOptions options = new JsonSerializerOptions
+                {
+                    ReferenceHandler = ReferenceHandler.Preserve,
+                    PropertyNameCaseInsensitive = true
+                };
+                string jsonObject = JsonSerializer.Serialize<Manager>(u, options);
+                StringContent content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/SignUpM", content);
+                if (response.IsSuccessStatusCode)
+                {
+
+                    jsonObject = await response.Content.ReadAsStringAsync();
+                    Manager updatedUser = JsonSerializer.Deserialize<Manager>(jsonObject, options);
+                    return updatedUser;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+
+        }
     }
 }

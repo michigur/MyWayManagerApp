@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyWayManagerApp.Views.SignUp">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Grid Style="{StaticResource SignUpG}" >
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <!--Image-->
+                    <RowDefinition></RowDefinition>
+                    <!--Div-->
+                </Grid.RowDefinitions>
+                <Grid Padding="0,0,0,60">
+                    <Image Source="logo.jpg" Aspect="AspectFit"/>
+                    <!--Image-->
+                </Grid>
+                <Grid Style="{StaticResource logInSignUpDivG}" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Row="2" Style="{StaticResource logInSignUp}" >
+                        <!--Div/Box-->
+                        <Grid Padding="0" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+
+                                <!--Back Button-->
+                            </Grid.RowDefinitions>
+
+
+                            <!--User Email-->
+                            <Entry Placeholder="Email" Style="{StaticResource entry}" Text="{Binding Email}" Keyboard="Email"  />
+                            <Label Text="{Binding EmailError}" IsVisible="{Binding ShowEmailError}" />
+
+                            <!--user Password-->
+                            <Entry Placeholder="Password" Grid.Row="1" IsPassword="True" Style="{StaticResource entry}" Text="{Binding Password}"/>
+                            <Label Text="{Binding PasswordError}" IsVisible="{Binding ShowPasswordError}" Grid.Row="1" />
+
+                            <!-- Name-->
+                            <Entry Placeholder="First Name" Grid.Row="2" Style="{StaticResource entry}" Text="{Binding Name}" Keyboard="Text" />
+                            <Label Text="{Binding NameError}" IsVisible="{Binding ShowNameError}" Grid.Row="2"/>
+
+
+
+                            <Picker Title="Pick Gender" ItemsSource="{Binding Genders}" ItemDisplayBinding="{Binding GenderName}" SelectedItem="{Binding SelectedGender}"  Style="{StaticResource entry}" Grid.Row="3"/>
+
+
+                            
+
+                            <!--submit-->
+                            <Button Command="{Binding SubmitCommand}" Text="Done!" Grid.Row="5" />
+                            <!--go to login-->
+                            <Button Text="Already Have An Account?" Grid.Row="6" Command="{Binding GoToLogInCommand}"/>
+                            <!--To Advanced Sign Up - Button-->
+
+
+                        </Grid>
+                    </Frame>
+
+                </Grid>
+            </Grid>
+
+
+
+
+
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
