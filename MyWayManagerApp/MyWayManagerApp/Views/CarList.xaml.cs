@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MyWayManagerApp.ViewModels;
-
 namespace MyWayManagerApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ClientList : ContentPage
+    public partial class CarList : ContentPage
     {
-        public ClientList()
+        public CarList()
         {
-            this.BindingContext = new ClientListViewModel();
+            this.BindingContext = new CarListViewModel();
             InitializeComponent();
         }
     }

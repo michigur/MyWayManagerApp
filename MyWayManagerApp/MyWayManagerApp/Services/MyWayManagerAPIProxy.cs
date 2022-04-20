@@ -108,6 +108,8 @@ namespace MyWayManagerApp.Services
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                
+                
                 return null;
             }
         }
@@ -144,6 +146,37 @@ namespace MyWayManagerApp.Services
         }
 
 
+        public async Task<List<Car>> GetCarsAsync()
+        {
+            try
+            {
+
+                HttpResponseMessage response = await this.client.GetAsync($"{this.baseUri}/GetCars");
+                if (response.IsSuccessStatusCode)
+                {
+                    JsonSerializerOptions options = new JsonSerializerOptions
+                    {
+                        ReferenceHandler = ReferenceHandler.Preserve,
+                        PropertyNameCaseInsensitive = true
+                    };
+                    string content = await response.Content.ReadAsStringAsync();
+                    List<Car> eList = JsonSerializer.Deserialize<List<Car>>(content, options);
+                    return eList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
+
+
+
 
 
         public async Task<Manager> SignUpAsync(Manager u)
@@ -157,7 +190,7 @@ namespace MyWayManagerApp.Services
                 };
                 string jsonObject = JsonSerializer.Serialize<Manager>(u, options);
                 StringContent content = new StringContent(jsonObject, Encoding.UTF8, "application/json");
-                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/SignUpM", content);
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/SignUp", content);
                 if (response.IsSuccessStatusCode)
                 {
 
@@ -177,5 +210,41 @@ namespace MyWayManagerApp.Services
             }
 
         }
+
+
+
+
+
+
+        public async Task<bool> AddCar(Car u)
+        {
+            try
+            {
+                JsonSerializerOptions options = new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                };
+                string json = JsonSerializer.Serialize<Car>(u, options);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = await this.client.PostAsync($"{this.baseUri}/AddCar", content);
+                if (response.IsSuccessStatusCode)
+                {
+
+                    string jsonContent = await response.Content.ReadAsStringAsync();
+                    bool b = JsonSerializer.Deserialize<bool>(jsonContent, options);
+                    return b;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
+
     }
 }

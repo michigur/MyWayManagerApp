@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Text;
+using System.ComponentModel;
 using System.Windows.Input;
 using Xamarin.Forms;
 using MyWayManagerApp.Services;
 using MyWayManagerApp.Views;
 using MyWayManagerApp.Models;
-//using Android.Content.Res;
-using Xamarin.CommunityToolkit.Extensions;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace MyWayManagerApp.ViewModels
 {
-    class ClientListViewModel : INotifyPropertyChanged
+    class CarListViewModel : INotifyPropertyChanged
     {
-
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
@@ -24,8 +23,7 @@ namespace MyWayManagerApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
-
-        public ClientListViewModel()
+        public CarListViewModel()
         {
             OnGo();
         }
@@ -33,14 +31,17 @@ namespace MyWayManagerApp.ViewModels
         public ICommand Go => new Command(OnGo);
         public async void OnGo()
         {
-            List<Client> clients = await this.LoadClients((App)App.Current);
+            List<Car> cars = await this.Loadcars((App)App.Current);
         }
 
-        private async Task<List<Client>> LoadClients(App theApp)
+        public async Task<List<Car>> Loadcars(App theApp)
         {
             MyWayManagerAPIProxy proxy = MyWayManagerAPIProxy.CreateProxy();
-            theApp.ClientsList = await proxy.GetUsersAsync();
-            return theApp.ClientsList;
+            theApp.Cars = await proxy.GetCarsAsync();
+            
+            return theApp.Cars;
         }
+
+
     }
 }

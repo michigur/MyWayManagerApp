@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MyWayManagerApp.ViewModels;
 
 namespace MyWayManagerApp.Views
 {
@@ -14,6 +15,8 @@ namespace MyWayManagerApp.Views
     {
         public HomePage()
         {
+
+            this.BindingContext = new ProfilePageViewModel();
             InitializeComponent();
         }
     }

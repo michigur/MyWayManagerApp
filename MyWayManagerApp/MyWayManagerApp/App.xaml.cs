@@ -14,12 +14,13 @@ namespace MyWayManagerApp
         {
             get
             {
-                return false; //change this before release!
+                return true; //change this before release!
             }
         }
 
         public Manager CurrentUser { get; set; }
 
+        public List<Car> Cars { get; set; }
         //The list of phone types
         public List<Client> ClientsList { get; set; }
 
@@ -27,7 +28,7 @@ namespace MyWayManagerApp
         {
             InitializeComponent();
 
-            MainPage = new SignUp();
+            MainPage = new LogIn();
         }
 
         protected override void OnStart()
