@@ -50,6 +50,7 @@
                 </Label>
                 <Button Grid.Row="6" Grid.Column="0" Command="{Binding NevigateToCL}"   VerticalOptions="End"  BackgroundColor="#bf0603" Text="Client List" FontSize="25" TextColor="White"  CornerRadius="20"  Margin="16"  />
                 <Button Grid.Row="6" Grid.Column="1" Command="{Binding NevigateToCarL}"   VerticalOptions="End"  BackgroundColor="#bf0603" Text="Car List" FontSize="25" TextColor="White"  CornerRadius="20"  Margin="16"  />
+                <Button Grid.Row="6" Grid.Column="2" Command="{Binding NevigateToAddCar}"   VerticalOptions="End"  BackgroundColor="#bf0603" Text="Add Car" FontSize="25" TextColor="White"  CornerRadius="20"  Margin="16"  />
             </Grid>
         </Frame>
     </StackLayout>

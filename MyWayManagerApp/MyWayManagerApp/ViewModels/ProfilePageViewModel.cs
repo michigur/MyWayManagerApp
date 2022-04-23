@@ -148,5 +148,14 @@ namespace MyWayManagerApp.ViewModels
             Page p = new CarList();
             App.Current.MainPage = p;
         }
+
+
+        public ICommand NevigateToAddCar => new Command(ToUpdate2);
+        void ToUpdate2()
+        {
+
+            Page p = new AddCar();
+            App.Current.MainPage = p;
+        }
     }
 }
