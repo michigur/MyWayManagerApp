@@ -216,12 +216,13 @@ namespace MyWayManagerApp.Services
 
 
 
-        public async Task<bool> AddCar(Car u)
+        public async Task<Car> AddCar(Car u)
         {
             try
             {
                 JsonSerializerOptions options = new JsonSerializerOptions
                 {
+                    ReferenceHandler = ReferenceHandler.Preserve,
                     PropertyNameCaseInsensitive = true
                 };
                 string json = JsonSerializer.Serialize<Car>(u, options);
@@ -231,18 +232,18 @@ namespace MyWayManagerApp.Services
                 {
 
                     string jsonContent = await response.Content.ReadAsStringAsync();
-                    bool b = JsonSerializer.Deserialize<bool>(jsonContent, options);
+                    Car b = JsonSerializer.Deserialize<Car>(jsonContent, options);
                     return b;
                 }
                 else
                 {
-                    return false;
+                    return null;
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return false;
+                return null;
             }
         }
 

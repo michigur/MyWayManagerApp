@@ -138,9 +138,11 @@ namespace MyWayManagerApp.ViewModels
 
             };
 
-                bool isReturned = await proxy.AddCar(u);
+            Car isReturned = await proxy.AddCar(u);
 
-                if (isReturned == false)
+                if (isReturned == null)
+
+
                 {
                     await Application.Current.MainPage.DisplayAlert("Sign Up Failed!", "Invalid input", "OK");
 
