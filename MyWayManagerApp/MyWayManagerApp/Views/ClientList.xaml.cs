@@ -15,8 +15,15 @@ namespace MyWayManagerApp.Views
     {
         public ClientList()
         {
-            this.BindingContext = new ClientListViewModel();
+            ClientListViewModel context = new ClientListViewModel();
+            context.NavigateToPageEvent += NavigateToAsync;
+            this.BindingContext = context;
             InitializeComponent();
+        }
+
+        public async void NavigateToAsync(Page p)
+        {
+            await Navigation.PushAsync(p);
         }
     }
 }

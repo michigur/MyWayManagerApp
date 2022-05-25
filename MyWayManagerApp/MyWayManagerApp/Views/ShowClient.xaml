@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyWayManagerApp.Views.ShowClient">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Name}" HorizontalTextAlignment="Center" FontSize="Large"/>
+            <Label Text="{Binding LastName}" HorizontalTextAlignment="Center" FontSize="Large"/>
+            <Label Text="{Binding Location}" HorizontalTextAlignment="Center" FontSize="Large"/>
+            <Label Text="{Binding Email}" HorizontalTextAlignment="Center" FontSize="Large"/>
+            <Label Text="{Binding Password}" HorizontalTextAlignment="Center" FontSize="Large"/>
+            <Label Text="{Binding UserName}" HorizontalTextAlignment="Center" FontSize="Large"/>
+            <Label Text="{Binding Birthday}" HorizontalTextAlignment="Center" FontSize="Large"/>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
