@@ -52,7 +52,7 @@ namespace MyWayManagerApp.ViewModels
             MonkeyList = new ObservableCollection<Client>();
             OnGo();
             this.isRefreshing = false;
-            CreateMonkeyCollection();
+            //CreateMonkeyCollection();
         }
 
         async void CreateMonkeyCollection()
@@ -69,6 +69,10 @@ namespace MyWayManagerApp.ViewModels
         public async void OnGo()
         {
             clients = await this.LoadClients((App)App.Current);
+            foreach (Client m in clients)
+            {
+                this.MonkeyList.Add(m);
+            }
         }
 
         private async Task<List<Client>> LoadClients(App theApp)

@@ -64,7 +64,7 @@ namespace MyWayManagerApp.ViewModels
                 App theApp = (App)Application.Current;
                 theApp.CurrentUser = user;
                 Page p = new HomePage();
-                App.Current.MainPage = p;
+                App.Current.MainPage = new NavigationPage(p);
 
 
 

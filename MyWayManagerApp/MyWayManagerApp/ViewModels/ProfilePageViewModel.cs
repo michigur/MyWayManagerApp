@@ -137,16 +137,16 @@ namespace MyWayManagerApp.ViewModels
         {
 
             Page p = new ClientList();
-            App.Current.MainPage = p;
+            App.Current.MainPage.Navigation.PushAsync(p);
         }
 
 
-        public ICommand NevigateToCarL => new Command(ToUpdate1);
+        public ICommand NevigateToCarL => new Command(ToUpdate1); 
         void ToUpdate1()
         {
 
             Page p = new CarList();
-            App.Current.MainPage = p;
+            App.Current.MainPage.Navigation.PushAsync(p);
         }
 
 
@@ -155,7 +155,7 @@ namespace MyWayManagerApp.ViewModels
         {
 
             Page p = new AddCar();
-            App.Current.MainPage = p;
+            App.Current.MainPage.Navigation.PushAsync(p);
         }
     }
 }
