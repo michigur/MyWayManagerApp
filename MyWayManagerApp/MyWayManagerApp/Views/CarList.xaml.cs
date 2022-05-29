@@ -14,8 +14,16 @@ namespace MyWayManagerApp.Views
     {
         public CarList()
         {
-            this.BindingContext = new CarListViewModel();
+            CarListViewModel context = new CarListViewModel();
+            context.NavigateToPageEvent += NavigateToAsync;
+            this.BindingContext = context;
             InitializeComponent();
+        }
+
+
+        public async void NavigateToAsync(Page p)
+        {
+            await Navigation.PushAsync(p);
         }
     }
 }
