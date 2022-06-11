@@ -121,6 +121,7 @@ namespace MyWayManagerApp.ViewModels
             Manager currentUser = theApp.CurrentUser;
             if (currentUser != null)
             {
+                this.Name = currentUser.ManagerName;
                 this.Email = currentUser.ManagerEmail;
                 this.UserName = currentUser.ManagerUsername;
                 this.Name = currentUser.ManagerName;
@@ -156,6 +157,21 @@ namespace MyWayManagerApp.ViewModels
 
             Page p = new AddCar();
             App.Current.MainPage.Navigation.PushAsync(p);
+        }
+
+
+
+
+
+        public ICommand Logout => new Command(logout);
+        void logout()
+        {
+            App theApp = (App)Application.Current;
+            theApp.CurrentUser = null;
+            Page p = new LogIn();
+            App.Current.MainPage = new NavigationPage(p);
+
+
         }
     }
 }

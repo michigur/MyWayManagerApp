@@ -55,11 +55,11 @@ namespace MyWayManagerApp.ViewModels
 
 
         List<Car> clients = new List<Car>();
-        public ObservableCollection<Car> MonkeyList { get; }
+        public ObservableCollection<Car> MonkeyList1 { get; }
 
         public CarListViewModel()
         {
-            MonkeyList = new ObservableCollection<Car>();
+            MonkeyList1 = new ObservableCollection<Car>();
             OnGo();
             this.isRefreshing = false;
             //CreateMonkeyCollection();
@@ -70,7 +70,7 @@ namespace MyWayManagerApp.ViewModels
 
             foreach (Car m in clients)
             {
-                this.MonkeyList.Add(m);
+                this.MonkeyList1.Add(m);
             }
         }
 
@@ -81,7 +81,7 @@ namespace MyWayManagerApp.ViewModels
             clients = await this.LoadClients((App)App.Current);
             foreach (Car m in clients)
             {
-                this.MonkeyList.Add(m);
+                this.MonkeyList1.Add(m);
             }
         }
 
@@ -104,7 +104,7 @@ namespace MyWayManagerApp.ViewModels
             if (obj is Car)
             {
                 Car chosenMonkey = (Car)obj;
-                Page monkeyPage = new ShowClient();
+                Page monkeyPage = new ShowCar();
                 ShowCarViewModel monkeyContext = new ShowCarViewModel
                 {
                     CarID = chosenMonkey.CarId,
@@ -127,9 +127,9 @@ namespace MyWayManagerApp.ViewModels
         public ICommand DeleteCommand => new Command<Car>(RemoveMonkey);
         void RemoveMonkey(Car m)
         {
-            if (MonkeyList.Contains(m))
+            if (MonkeyList1.Contains(m))
             {
-                MonkeyList.Remove(m);
+                MonkeyList1.Remove(m);
             }
 
         }
@@ -145,10 +145,10 @@ namespace MyWayManagerApp.ViewModels
         {
             MyWayManagerAPIProxy proxy = MyWayManagerAPIProxy.CreateProxy();
             List<Car> theMonkeys = await proxy.GetCarsAsync();
-            this.MonkeyList.Clear();
+            this.MonkeyList1.Clear();
             foreach (Car m in theMonkeys)
             {
-                this.MonkeyList.Add(m);
+                this.MonkeyList1.Add(m);
             }
             this.IsRefreshing = false;
         }

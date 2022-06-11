@@ -4,14 +4,66 @@
              x:Class="MyWayManagerApp.Views.ShowCar"
               NavigationPage.HasNavigationBar="True">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="{Binding CarID}" HorizontalTextAlignment="Center" FontSize="Large"/>
-            <Label Text="{Binding FleetID}" HorizontalTextAlignment="Center" FontSize="Large"/>
-            <Label Text="{Binding Location}" HorizontalTextAlignment="Center" FontSize="Large"/>
-            <Label Text="{Binding NumSeats}" HorizontalTextAlignment="Center" FontSize="Large"/>
-            <Label Text="{Binding CarTypeID}" HorizontalTextAlignment="Center" FontSize="Large"/>
-            <Label Text="{Binding CarTank}" HorizontalTextAlignment="Center" FontSize="Large"/>
-            
+        <StackLayout BackgroundColor="#2d2f31">
+          
+
+            <Frame  HasShadow="False" CornerRadius="40" Margin="0,100,0,0" VerticalOptions="FillAndExpand" BackgroundColor="#dddddd">
+
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="*,*,*">
+
+                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Padding="20,40,0,0">
+
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Location:" FontAttributes="Bold" TextColor="Black" FontSize="18"/>
+                                <Span Text="{Binding Location}" TextColor="#2d2f31" FontSize="18"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Padding="20,40,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Car ID:" FontAttributes="Bold" TextColor="Black" FontSize="18"/>
+                                <Span Text="{Binding CarID}" TextColor="#2d2f31" FontSize="18"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Padding="20,40,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Fleet ID:" FontAttributes="Bold" TextColor="Black" FontSize="18"/>
+                                <Span Text="{Binding FleetID}" TextColor="#2d2f31" FontSize="18"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Padding="20,40,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Seates:" FontAttributes="Bold" TextColor="Black" FontSize="18"/>
+                                <Span Text="{Binding NumSeats}" TextColor="#2d2f31" FontSize="18"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Padding="20,40,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Car Type ID:" FontAttributes="Bold" TextColor="Black" FontSize="18"/>
+                                <Span Text="{Binding CarTypeID}" TextColor="#2d2f31" FontSize="18"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" Padding="20,40,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Tank:" FontAttributes="Bold" TextColor="Black" FontSize="18"/>
+                                <Span Text="{Binding CarTank}" TextColor="#2d2f31" FontSize="18"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                   
+
+                </Grid>
+            </Frame>
 
         </StackLayout>
     </ContentPage.Content>

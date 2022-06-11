@@ -4,7 +4,8 @@
              x:Class="MyWayManagerApp.Views.ClientList"
              xmlns:local="clr-namespace:MyWayManagerApp.ViewModels"
              x:Name="thePage"
-             NavigationPage.HasNavigationBar="True">
+             NavigationPage.HasNavigationBar="True"
+              NavigationPage.HasBackButton="True">
 
     <ContentPage.Content>
         <StackLayout>
@@ -24,7 +25,7 @@
                                            IconImageSource="delete.png"
                                            BackgroundColor="LightPink"
                                            Command="{Binding Source={x:Reference collectionName}, Path=BindingContext.DeleteCommand}"
-                                           CommandParameter="{Binding}" />
+                                           CommandParameter="{Binding DeleteCommand}" />
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
                                 <Grid Padding="10" HorizontalOptions="FillAndExpand">

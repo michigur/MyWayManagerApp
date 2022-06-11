@@ -2,14 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyWayManagerApp.Views.CarList"
-              NavigationPage.HasNavigationBar="True">
+              NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="True">
     <ContentPage.Content>
         <StackLayout>
             <RefreshView x:Name="refreshView"
              Command="{Binding RefreshCommand}"
              IsRefreshing="{Binding IsRefreshing}">
                 <CollectionView x:Name="collectionName" 
-                            ItemsSource="{Binding MonkeyList}" SelectionMode="Single"
+                            ItemsSource="{Binding MonkeyList1}" SelectionMode="Single"
                         SelectionChangedCommand="{Binding SelctionChanged}"
                         SelectionChangedCommandParameter="{Binding Source={x:Reference collectionName}, Path=SelectedItem}">
                     <CollectionView.ItemTemplate>
@@ -21,7 +22,7 @@
                                            IconImageSource="delete.png"
                                            BackgroundColor="LightPink"
                                            Command="{Binding Source={x:Reference collectionName}, Path=BindingContext.DeleteCommand}"
-                                           CommandParameter="{Binding}" />
+                                           CommandParameter="{Binding DeleteCommand}" />
                                     </SwipeItems>
                                 </SwipeView.LeftItems>
                                 <Grid Padding="10" HorizontalOptions="FillAndExpand">
@@ -36,6 +37,9 @@
 
                                     <Label Grid.Column="0" Grid.Row="1"
                                    Text="{Binding CarID}" 
+                                   FontAttributes="Bold" HorizontalOptions="Center" TextColor="DarkBlue"/>
+                                    <Label Grid.Column="0" Grid.Row="1"
+                                   Text="{Binding Location}" 
                                    FontAttributes="Bold" HorizontalOptions="Center"/>
                                     <Label Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"></Label>
                                   
